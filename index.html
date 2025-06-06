@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Copyright (c) 2025 by limhyejin013 (http://jsbin.com/vegusef/1/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>마리끌레르 - newnew</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap');
+
+    body {
+      margin: 0;
+      font-family: 'Noto Sans KR', sans-serif;
+      background-color: #eaffd0;
+      color: #222;
+      line-height: 1.7;
+      font-size: 14px;
+    }
+
+    .wrapper {
+      max-width: 1000px;
+      margin: 60px auto;
+      background-color: #fff;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+      padding: 40px 60px;
+      box-sizing: border-box;
+    }
+
+    .logo {
+      max-width: 70%;
+      height: auto;
+      display: block;
+      margin: 60px auto 20px;
+      pointer-events: none;
+    }
+
+    header {
+      padding: 0 20px 40px;
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    header h1 {
+      font-size: 2.0rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 1rem;
+      color: #555;
+    }
+
+    main {
+      margin: 40px 0;
+      padding: 0;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 60px 0;
+      counter-reset: section;
+    }
+
+    .section {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+
+    /* 이미지 행 그리드 */
+    .section.nuance .image-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      justify-items: center;
+      margin-bottom: 25px;
+    }
+
+    /* 공통 이미지 스타일 */
+    .section img {
+      width: 100%;
+      max-width: 480px;
+      height: auto;
+      object-fit: cover;
+      border-radius: 40px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.07);
+      cursor: pointer;
+      transition: none;
+      margin-bottom: 25px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* 이미지 행 내 개별 이미지 여백 제거 */
+    .section.nuance .image-row img {
+      margin-bottom: 0;
+    }
+
+    .section h2 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: #111;
+      counter-increment: section;
+    }
+
+    .section h2::before {
+      content: counter(section) ". ";
+      font-weight: 700;
+    }
+
+    .section p {
+      font-size: 0.95rem;
+      color: #444;
+      margin-bottom: 10px;
+      flex-grow: 1;
+    }
+
+    .section a {
+      align-self: flex-start;
+      font-size: 0.9rem;
+      color: #007aff;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: all 0.3s ease;
+    }
+
+    .section a:hover {
+      border-bottom: 1px solid #007aff;
+    }
+
+    footer {
+      background-color: #eaffd0;
+      color: #222;
+      padding: 24px 40px;
+      text-align: center;
+      font-size: 14px;
+      line-height: 1.6;
+      letter-spacing: 0.5px;
+      margin: 40px auto 0;
+      max-width: 1000px;
+      border-radius: 0;
+    }
+
+    /* 모바일 대응 */
+@media (max-width: 720px) {
+  .wrapper {
+    padding: 20px 15px; /* 좌우 패딩 줄여서 공간 확보 */
+    margin: 30px 10px;
+    box-sizing: border-box;
+    max-width: 100%; /* 최대 너비 꽉 채우기 */
+  }
+
+  .logo {
+    max-width: 90%; /* 로고 크기 키우기 */
+    margin: 40px auto 20px; /* 위쪽 여백도 조금 줄임 */
+    display: block;
+  }
+
+      header {
+        padding: 0 10px 30px;
+      }
+
+      header h1 {
+        font-size: 1.5rem;
+      }
+
+      header p {
+        font-size: 0.9rem;
+      }
+
+      main {
+        gap: 40px 0;
+      }
+
+      .section.nuance .image-row {
+        grid-template-columns: 1fr !important;
+        justify-items: center;
+        gap: 20px;
+      }
+
+      .section img {
+        max-width: 100%;
+        border-radius: 20px;
+        margin-bottom: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="wrapper">
+    <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Marie_Claire_Magazine_logo.svg/1024px-Marie_Claire_Magazine_logo.svg.png" alt="Marie Claire 로고" />
+
+    <header>
+      <h1>[Editor’s Secret Spot] 초여름, 도시 속 나만의 아지트</h1>
+      <p>web design 임혜진 | 2025년 05월 28일</p>
+    </header>
+
+    <main>
+      <section class="section nuance">
+        <h2>누앙스, 미묘한 차이</h2>
+        <p>서울에서 가장 바쁜 거리 중 하나인 압구정 로데오를 지나 조금 걸으면, 한적한 청담 골목이 등장한다. 그리고 그 안에는 쉽게 지나칠 수 없는 공간이 있다. 이름부터 묘한 여운을 남기는 ‘누앙스 미묘한 차이’다.</p>
+        <p>겉보기엔 카페인지 플라워숍인지 긴가민가하지만, 정답은 둘 다. 정확히 말하자면, 플로리스트 최민지가 운영하는 와인 바 ‘누앙스’와 플라워숍 ‘블레스유플라워’가 하나의 세계처럼 공존하는 복합 공간이다.</p>
+        <div class="image-row">
+          <img src="https://img.marieclairekorea.com//2025/05/mck_68365eb63b6c7.jpg" alt="누앙스1" />
+          <img src="https://img.marieclairekorea.com//2025/05/mck_68365f7b1f281-1152x1536.jpg" alt="누앙스2" />
+        </div>
+      </section>
+
+      <section class="section nuance">
+        <p>누앙스는 와인과 뱅쇼, 커피, 디저트, 식사 메뉴까지 갖춘 카페 겸 와인바이기도 하다. 특히 추천하고 싶은 메뉴는 큼지막한 소시지가 함께 나오는 김치볶음밥. 익숙한 맛이지만 재료의 조화가 인상 깊다.</p>
+        <p>누앙스를 제대로 느끼고 싶다면 비 오는 날 방문해 보자. 유리창 너머로 쏟아지는 비와 식물을 바라보고 있으면, 마치 현실과 유리막 하나를 사이에 두고 전혀 다른 세계에 들어온 듯한 기분이 든다.</p>
+        <div class="image-row">
+          <img src="https://img.marieclairekorea.com//2025/05/mck_68365f5378597.jpg" alt="누앙스3" />
+          <img src="https://img.marieclairekorea.com//2025/05/mck_68365f1735c86.jpg" alt="누앙스4" />
+        </div>
+        <a href="https://www.instagram.com/nuance_kr">인스타그램에서 보기</a>
+      </section>
+
+      <section class="section nuance">
+        <h2>카페 베란다</h2>
+        <p>서촌에 들를 때마다 찾게 되는 카페 베란다. 낮은 조도의 조명과 따뜻한 나무의 질감, 그리고 책장 가득한 책들이 어우러져 따뜻한 느낌을 준다.</p>
+        <div class="image-row">
+          <img src="https://img.marieclairekorea.com//2025/05/mck_68366ad23c9d3.jpg" alt="베란다1" />
+          <img src="https://img.marieclairekorea.com//2025/05/mck_68366ad23ca42.jpg" alt="베란다2" />
+        </div>
+        <p>무엇보다 가장 특별한 공간은 바로 테라스다. 흐리고 비 오는 날의 테라스를 더 좋아한다. 유리창 너머로 보이는 나무들과 고요한 풍경은 마치 영화의 한 장면 같다.</p>
+        <p>추천 음료는 바질 토마토 에이드. 베란다만의 레시피로 만든 비엔나커피와 카페라떼도 부드럽고 진한 풍미가 매력적이다.</p>
+        <div class="image-row">
+          <img src="https://img.marieclairekorea.com//2025/05/mck_68366b8dd33c4-1152x1536.png" alt="베란다3" />
+          <img src="https://img.marieclairekorea.com//2025/05/mck_68366ba467142.jpg" alt="베란다4" />
+        </div>
+        <a href="https://www.instagram.com/veranda_seoul">인스타그램에서 보기</a>
+      </section>
+    </main>
+  </div>
+
+  <footer>
+    <p>Team Members: 박서진 · 성인선 · 김수민 · 최수아 · 임혜진</p>
+    <p>계원예술대학교 1학년 시각디자인과 ㅣ 지도교수: 권은경</p>
+  </footer>
+
+<script src="https://static.jsbin.com/js/render/edit.js?4.1.8"></script>
+<script>jsbinShowEdit && jsbinShowEdit({"static":"https://static.jsbin.com","root":"https://jsbin.com"});</script>
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-1656750-34', 'auto');
+ga('require', 'linkid', 'linkid.js');
+ga('require', 'displayfeatures');
+ga('send', 'pageview');
+
+</script>
+
+</body>
+</html>
